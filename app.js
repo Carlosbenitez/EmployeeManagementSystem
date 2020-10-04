@@ -176,19 +176,20 @@ function updateRole() {
                 name: "departmentIDUpdate",
             },
         ]
-        ).then(answer => {
-            var query = "UPDATE role SET ? WHERE ?";
-            connection.query(query, [
-                {title: answer.titleUpdate,
+    ).then(answer => {
+        var query = "UPDATE role SET ? WHERE ?";
+        connection.query(query, [
+            {
+                title: answer.titleUpdate,
                 salary: answer.salaryUpdate,
                 department_id: answer.departmentIDUpdate,
-                },
-                {
-                    id:answer.roleID
-                }], function (error, data) {
-            if(error) throw error;
+            },
+            {
+                id: answer.roleID
+            }], function (error, data) {
+                if (error) throw error;
                 console.log("Role updated!")
                 init()
             })
-        })
-    };
+    })
+};
